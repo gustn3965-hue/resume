@@ -30,10 +30,6 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--gray-50);
@@ -41,70 +37,10 @@
             line-height: 1.7;
         }
 
-        /* Layout */
-        .layout {
-            display: flex;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            left: max(20px, calc((100vw - 1200px) / 2 - 20px));
-            top: 50%;
-            transform: translateY(-50%);
-            width: 180px;
-            z-index: 100;
-        }
-
-        .sidebar-nav {
-            background: rgba(248, 250, 252, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        .sidebar-nav ul {
-            list-style: none;
-        }
-
-        .sidebar-nav li {
-            margin-bottom: 4px;
-        }
-
-        .sidebar-nav a {
-            display: block;
-            padding: 10px 14px;
-            color: var(--gray-500);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-nav a:hover {
-            color: var(--gray-700);
-            background: var(--gray-50);
-        }
-
-        .sidebar-nav a.active {
-            color: var(--primary);
-            background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
-            border-left-color: var(--primary);
-            font-weight: 600;
-        }
-
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 60px 24px;
-            margin-left: 220px;
         }
 
         /* Header */
@@ -198,7 +134,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            scroll-margin-top: 40px;
         }
 
         .section-title::before {
@@ -263,34 +198,17 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        /* Timeline Card with Image - Flex Layout */
-        .timeline-card.with-image {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .timeline-card.with-image .timeline-main {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .timeline-card.with-image .timeline-image {
-            flex-shrink: 0;
-            margin-top: 0;
-        }
-
         .timeline-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .timeline-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--dark);
         }
@@ -304,11 +222,11 @@
             font-weight: 500;
         }
 
-        /* Indented Content */
-        .timeline-body {
-            padding-left: 20px;
-            border-left: 2px solid var(--gray-100);
-            margin-left: 4px;
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
         .timeline-desc {
@@ -349,7 +267,7 @@
             top: 10px;
             width: 5px;
             height: 5px;
-            background: var(--gray-400);
+            background: var(--primary);
             border-radius: 50%;
         }
 
@@ -368,14 +286,15 @@
         }
 
         .timeline-image {
+            margin-top: 16px;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--gray-200);
-            width: 180px;
         }
 
         .timeline-image img {
             width: 100%;
+            max-width: 300px;
             height: auto;
             display: block;
         }
@@ -608,16 +527,6 @@
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .sidebar {
-                display: none;
-            }
-
-            .container {
-                margin-left: auto;
-            }
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 40px 16px;
@@ -644,43 +553,11 @@
             .contact {
                 flex-direction: column;
                 gap: 8px;
-                align-items: center;
-            }
-
-            .contact span {
-                justify-content: center;
-            }
-
-            .timeline-card.with-image {
-                flex-direction: column;
-            }
-
-            .timeline-card.with-image .timeline-image {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .timeline-body {
-                padding-left: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <div class="sidebar-nav">
-            <ul>
-                <li><a href="#about" class="active">소개</a></li>
-                <li><a href="#education">학력</a></li>
-                <li><a href="#career">경력</a></li>
-                <li><a href="#projects-kakaomap">카카오맵</a></li>
-                <li><a href="#projects-kakaotalk">카카오톡</a></li>
-                <li><a href="#personal-projects">개인 프로젝트</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="container">
         <!-- Header -->
         <header class="header">
@@ -699,19 +576,12 @@
         </header>
 
         <!-- About -->
-        <section id="about" class="about">
+        <section class="about">
             <p>팀 내에서 반복적으로 발생하는 문제를 개선하거나 자동화하는 작업에 적극적으로 관심을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다. 실무진에서 침묵하기보다는 저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음을 가지고 행동하고 있습니다.</p>
         </section>
 
-        <!-- Education -->
-        <h2 id="education" class="section-title">학력</h2>
-        <div class="education">
-            <h3>호서대학교 통계학과 학사 졸업</h3>
-            <span class="period">2014 ~ 2020</span>
-        </div>
-
         <!-- Career -->
-        <h2 id="career" class="section-title">경력</h2>
+        <h2 class="section-title">경력</h2>
         <div class="career-card">
             <div class="company-header">
                 <div class="company-logo">K</div>
@@ -765,26 +635,23 @@
         </div>
 
         <!-- 카카오맵 Projects -->
-        <h2 id="projects-kakaomap" class="section-title">프로젝트 (카카오맵)</h2>
+        <h2 class="section-title">프로젝트 (카카오맵)</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-card">
                     <div class="timeline-header">
-                        <span class="timeline-title">Jenkins 이용한 빌드 업로드 자동화</span>
+                        <span class="timeline-title">Jenkins 빌드 업로드 자동화</span>
                         <span class="timeline-period">2025.08 ~ 2025.09</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">사내 배포 시스템에서 배포된 빌드를 Apple Developer로의 반복적 수작업 업로드를 없애기 위해 완전 자동화 파이프라인을 자발적으로 설계·구축</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>사내 인프라를 사용하여 서버 구축 및 Jenkins, fastlane 사용</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            자동화로 인한 생산성 향상 (연간 60시간 생산성 향상 = 30분 x 10번 x 12개월)
-                        </div>
+                    <p class="timeline-desc">사내 배포 시스템에서 Apple Developer로의 반복적 수작업 업로드를 없애기 위해 완전 자동화 파이프라인을 자발적으로 설계·구축</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>사내 인프라를 사용하여 서버 구축 및 Jenkins, fastlane 사용</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 자동화로 인한 생산성 향상 (연간 60시간 = 30분 × 10번 × 12개월)
                     </div>
                 </div>
             </div>
@@ -795,23 +662,15 @@
                         <span class="timeline-title">프로젝트 번역시트 개선</span>
                         <span class="timeline-period">2025.07 ~ 2025.08</span>
                     </div>
-                    <div class="timeline-body">
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">번역시트 자동화</div>
-                            <ul class="timeline-list">
-                                <li>구글시트 기반 번역 문구를 프로젝트에 반영하는 과정이 복잡하다는 문제를 해결하기 위해 자발적으로 하나의 명령어로 개선</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">누락된 번역 검사</div>
-                            <ul class="timeline-list">
-                                <li>하나의 번역시트에서 다양한 스쿼드에서 작업하다보니 번역 키가 사라지는 이슈가 종종 발생해지면서 릴리즈전에 검사하는 코드 구현</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            자동화로 인한 생산성 향상 (연간 60시간 = 5분 x 5번 x 12명 x 12개월)
-                        </div>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>구글시트 기반 번역 문구 반영 과정을 하나의 명령어로 자동화</li>
+                            <li>번역 키 누락 이슈 방지를 위한 릴리즈 전 검사 코드 구현</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 자동화로 인한 생산성 향상 (연간 60시간 = 5분 × 5번 × 12명 × 12개월)
                     </div>
                 </div>
             </div>
@@ -822,69 +681,38 @@
                         <span class="timeline-title">Tuist 모듈 계층 부여</span>
                         <span class="timeline-period">2025.07</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">모듈 수가 증가하며 발생한 역할 모호함과 같은 계층의 의존성 참조 방지를 위해 자발적으로 검증하는 코드 구현</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>SwiftSyntax를 이용하여 코드 분석 및 Tuist 코드 수정</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            Tuist로 프로젝트 생성시 검증하도록 하고, 각 계층별로 어떤 모듈이 있는지 시각적으로 바로 확인 가능
-                        </div>
+                    <p class="timeline-desc">모듈 수 증가에 따른 역할 모호함과 같은 계층의 의존성 참조 방지를 위해 자발적으로 검증 코드 구현</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>SwiftSyntax를 이용한 코드 분석 및 Tuist 코드 수정</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 프로젝트 생성시 자동 검증, 계층별 모듈 시각적 확인 가능
                     </div>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-card with-image">
-                    <div class="timeline-main">
-                        <div class="timeline-header">
-                            <span class="timeline-title">장소상세 기능 개발</span>
-                            <span class="timeline-period">2025.05 ~ 진행중</span>
-                        </div>
-                        <div class="timeline-body">
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">동영상 후기 첨부 기능, 썸네일 재생 추가</div>
-                                <ul class="timeline-list">
-                                    <li>후기 작성에 동영상 첨부할 수 있도록 설계</li>
-                                    <li>동영상 플랫폼과 주도적으로 협업하여 스펙 기여</li>
-                                    <li>iOS 플랫폼만이 가지는 iCloud 저장소 특성 및 파일 접근 형태를 고려 및 제안하여 스펙 기여</li>
-                                </ul>
-                            </div>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">광고 개선</div>
-                                <ul class="timeline-list">
-                                    <li>다양한 지면에 광고 노출 확대를 위해 UI 수정</li>
-                                </ul>
-                            </div>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">디자인 개편 및 UI 추가</div>
-                                <ul class="timeline-list">
-                                    <li>SwiftUI 이용하여 UI 구현 및 리팩토링 진행</li>
-                                    <li>매끄러운 트렌지션 구현하기 위한 설계</li>
-                                </ul>
-                            </div>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">로그 개선</div>
-                                <ul class="timeline-list">
-                                    <li>특정 View의 클릭율을 파악하기 위해 화면에 보일때만 로그를 전송하도록 구현</li>
-                                </ul>
-                            </div>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">사진 A/B 테스트</div>
-                                <ul class="timeline-list">
-                                    <li>장소상세에 보여주는 사진 목록들을 서버에서 컨트롤할 수 있도록 A/B SDK 적용</li>
-                                </ul>
-                            </div>
-                            <div class="achievement">
-                                <strong>성과:</strong><br>
-                                광고 MoM 59% 증가<br>
-                                지하철 UI에서도 동일한 코드를 사용하고 있었고 점점 UI 개편에 의해 코드가 복잡해지면서 의존성 분리하여 리팩토링 진행하여 안정성 향상 및 개발시간 단축
-                            </div>
-                        </div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-title">장소상세 기능 개발</span>
+                        <span class="timeline-period">2025.05 ~ 진행중</span>
+                    </div>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>동영상 후기 첨부 기능 설계, 동영상 플랫폼과 주도적 협업</li>
+                            <li>iOS iCloud 저장소 특성 고려 및 스펙 기여</li>
+                            <li>다양한 지면 광고 노출 확대 UI 수정</li>
+                            <li>SwiftUI로 UI 구현 및 매끄러운 트랜지션 설계</li>
+                            <li>View 노출 기반 로그 전송 구현</li>
+                            <li>장소상세 사진 A/B 테스트 SDK 적용</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 광고 MoM 59% 증가 / 지하철 UI 의존성 분리 리팩토링으로 안정성 향상
                     </div>
                     <div class="timeline-image">
                         <img src="images/Pasted image 20260110012748.png" alt="장소상세 스크린샷">
@@ -893,28 +721,22 @@
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-card with-image">
-                    <div class="timeline-main">
-                        <div class="timeline-header">
-                            <span class="timeline-title">포토피커 리팩토링</span>
-                            <span class="timeline-period">2025.04 ~ 2025.05</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="timeline-desc">카카오맵에서는 후기를 작성하는 등 사용자 사진첩에 접근하여 사진을 선택하는 UI가 있지만 오랫동안 방치되어 복잡도가 높았던 포토피커 코드를 자발적으로 개선</p>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">주요 업무</div>
-                                <ul class="timeline-list">
-                                    <li>오래되어 기획서가 없었고, 기존과 동일한 스팩이 되도록 코드 분석 및 설계</li>
-                                    <li>의존성 분리하여 모듈로 구현 및 샘플앱 구현</li>
-                                    <li>수만장 기준으로 성능 테스트</li>
-                                </ul>
-                            </div>
-                            <div class="achievement">
-                                <strong>성과:</strong><br>
-                                클린아키텍처 기반으로 재구성하고 SwiftUI로 구현하여 유지보수성과 확장성을 크게 향상<br>
-                                수만장일때 진입시 속도 개선 (8초 -> 3초)
-                            </div>
-                        </div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-title">포토피커 리팩토링</span>
+                        <span class="timeline-period">2025.04 ~ 2025.05</span>
+                    </div>
+                    <p class="timeline-desc">오랫동안 방치되어 복잡도가 높았던 포토피커 코드를 자발적으로 개선</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>기획서 없이 기존 스펙과 동일하도록 코드 분석 및 설계</li>
+                            <li>의존성 분리하여 모듈로 구현 및 샘플앱 구현</li>
+                            <li>수만장 기준 성능 테스트</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 클린아키텍처 + SwiftUI로 재구성 / 수만장 진입 속도 8초 → 3초 개선
                     </div>
                     <div class="timeline-image">
                         <img src="images/Pasted image 20260110011950.png" alt="포토피커 스크린샷">
@@ -928,26 +750,23 @@
                         <span class="timeline-title">인증서 자동화</span>
                         <span class="timeline-period">2025.01 ~ 2025.02</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">팀원 규모 확대에 따라 인증서 관리가 비효율적으로 변하여 개선</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>기존 automatic으로 관리하던 인증서 방식을 manual로 변경하고 프로젝트 세팅 파일 수정</li>
-                                <li>fastlane을 이용하여 인증서를 공유할 수 있도록 적용</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            automatic signing 방식에서는 인원이 10명까지 밖에 사용하지 못했지만 fastlane으로 공유하면서 인원 제한이 없어지고, iOS직군 이외 맵 SDK 개발자들도 빌드 가능해짐
-                        </div>
+                    <p class="timeline-desc">팀원 규모 확대에 따라 인증서 관리가 비효율적으로 변하여 개선</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>automatic → manual 인증서 방식 변경</li>
+                            <li>fastlane을 이용한 인증서 공유 적용</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 인원 제한 해제 (10명 → 무제한), iOS 외 맵 SDK 개발자도 빌드 가능
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 카카오톡 Projects -->
-        <h2 id="projects-kakaotalk" class="section-title">프로젝트 (카카오톡)</h2>
+        <h2 class="section-title">프로젝트 (카카오톡)</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-card">
@@ -955,20 +774,16 @@
                         <span class="timeline-title">Tuist 도입 시도</span>
                         <span class="timeline-period">2024.09 ~ 2024.12</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">프로젝트를 Xcode로 관리하지 않고, Tuist를 이용하여 프로젝트 관리하면서 향후 모듈분리 및 SPM사용시 빌드 속도 기대, xcodeproj merge conflict 발생하지 않는 장점 등으로 도입 시도함.</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>Tuist로 프로젝트 생성을 위한 기존 Xcode 프로젝트 세팅과 동일하게 작동하도록 분석 및 검증</li>
-                                <li>기존 Xcode 프로젝트 Tuist로 전환하기위한 마이그레이션 설계 및 작업</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            프로젝트 분석과정에서 특정 스킴일때 빌드 속도 저하 발견<br>
-                            빌드세팅 마이그레이션에 사용하는 xcconfig 파일의 <a href="https://vapor3965.tistory.com/126" target="_blank" style="color: var(--primary);">Tuist 이슈 제보 및 오픈소스 기여</a>
-                        </div>
+                    <p class="timeline-desc">모듈분리 및 SPM 사용시 빌드 속도 향상, xcodeproj merge conflict 방지 등의 장점으로 도입 시도</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>기존 Xcode 프로젝트 세팅 분석 및 검증</li>
+                            <li>마이그레이션 설계 및 작업</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 특정 스킴 빌드 속도 저하 발견 / <a href="https://vapor3965.tistory.com/126" target="_blank" style="color: var(--primary);">Tuist 오픈소스 기여</a>
                     </div>
                 </div>
             </div>
@@ -979,18 +794,15 @@
                         <span class="timeline-title">XCTest 도입</span>
                         <span class="timeline-period">2024.01 ~ 2024.02</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">오래된 프로젝트로 XCTest target이 없었고, 추후 유지보수를 위해 테스트코드 작성이 필요하다고 판단하여 자발적으로 도입.</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>XCTest target을 추가하기 위한 프로젝트 세팅 전반적인 점검</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            XCTest 도입으로 추가되는 서비스 과제에 대해 테스트코드 작성을 통해 신규기능 도입등에 안정성을 제공하고 다른 개발자들도 쉽게 기능 추가할 수 있게 함.
-                        </div>
+                    <p class="timeline-desc">오래된 프로젝트로 XCTest target이 없었고, 유지보수를 위해 자발적으로 도입</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>XCTest target 추가를 위한 프로젝트 세팅 전반 점검</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 신규기능 도입 안정성 제공, 다른 개발자도 쉽게 기능 추가 가능
                     </div>
                 </div>
             </div>
@@ -1001,19 +813,16 @@
                         <span class="timeline-title">오픈채팅 파일 전송/다운로드 전환</span>
                         <span class="timeline-period">2023.11 ~ 2024.01</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">신규서버 이관작업에 따라 기존 오픈채팅에서 소켓으로 파일업로드를 REST API로 변경</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>오픈채팅에서만 다양한 파일 타입(포토, 멀티포토, 동영상, 장문메시지, 오디오, 연락처) 전송,다운로드를 REST API로 구현하도록 설계</li>
-                                <li>30장과 200MB 최대 스팩에 성능이슈 없도록 구현</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            기존 Objective-C의 레거시코드들을 Swift로 새로 작성하고, 의존성을 최대한 분리하여 개발하여 유지보수 높임
-                        </div>
+                    <p class="timeline-desc">신규서버 이관에 따라 소켓 파일업로드를 REST API로 변경</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>다양한 파일 타입 REST API 구현 (포토, 동영상, 오디오 등)</li>
+                            <li>30장, 200MB 최대 스펙에서 성능이슈 없도록 구현</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> Objective-C → Swift 전환, 의존성 분리로 유지보수성 향상
                     </div>
                 </div>
             </div>
@@ -1024,24 +833,17 @@
                         <span class="timeline-title">신고 기능 개발</span>
                         <span class="timeline-period">2023.03 ~ 2024.12</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">카카오톡은 사용자의 부적절한 메시지, 허위 프로필 등이 존재하고 다양한 방식으로 불쾌감을 주는 방법들이 계속 나타나여 신고 기능을 개선하고 추가하는 작업을 진행</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>파편화된 신고 UI 통일을 위한 구조 설계</li>
-                                <li>오픈채팅, 팀채팅 방장, 일반채팅, 프로필이미지 등 신고 기능 제공</li>
-                                <li>이미지 신고를 위한 이미지 업로드를 위한 API 구축</li>
-                                <li>다양한 서비스에 걸친 코드베이스 분석</li>
-                                <li>다양한 엣지 케이스 제공 및 스펙 기여</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            파편화된 신고 UI로 인한 코드 복잡도가 높았으나 클린 아키텍처를 적용해 의존성을 분리하고 유지보수성을 높임<br>
-                            디자이너와 더 나은 협업을 위해 신고 케이스마다 UI 프리뷰를 제공하여 디자이너와 필터링 시간을 단축함<br>
-                            macOS에서 리소스부족으로 제공하지 못했던 기능들도 Android/iOS/Window와 동일한 수준으로 기능 제공
-                        </div>
+                    <p class="timeline-desc">사용자의 부적절한 메시지, 허위 프로필 등에 대한 신고 기능 개선 및 추가</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>파편화된 신고 UI 통일을 위한 구조 설계</li>
+                            <li>오픈채팅, 팀채팅, 일반채팅, 프로필이미지 등 신고 기능 제공</li>
+                            <li>이미지 업로드 API 구축</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 클린 아키텍처 적용 / UI 프리뷰 제공으로 디자이너 협업 효율화 / Android/iOS/Windows 동일 수준 기능 제공
                     </div>
                 </div>
             </div>
@@ -1052,20 +854,17 @@
                         <span class="timeline-title">채팅방 캡처 기능 개발</span>
                         <span class="timeline-period">2023.03 ~ 2023.07</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">채팅방의 메시지들을 캡처하여 저장하는 기능 개발</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>다양한 메시지 타입, 채팅방 관련 코드베이스 분석 및 구현 설계</li>
-                                <li>캡처시 사용자의 프로필을 모자이크 또는 카카오프렌즈 적용을 위한 구조 설계</li>
-                                <li>캡처시 발생하는 메모리 이슈 등 성능 안정성 높임</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            자발적으로 제공하지 않던 캡처 기능을 발제하고 구현했으며, iOS/Window에서는 여러장 캡처시 앱이 죽거나 행이 걸리는 이슈들을 macOS에서는 보완하여 안정성 향상
-                        </div>
+                    <p class="timeline-desc">채팅방 메시지들을 캡처하여 저장하는 기능 개발</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>다양한 메시지 타입, 채팅방 코드베이스 분석 및 설계</li>
+                            <li>프로필 모자이크/카카오프렌즈 적용 구조 설계</li>
+                            <li>캡처시 메모리 이슈 등 성능 안정성 향상</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> 자발적으로 기능 발제 및 구현 / iOS/Windows 대비 안정성 향상
                     </div>
                 </div>
             </div>
@@ -1076,49 +875,37 @@
                         <span class="timeline-title">예약메시지 기능 개발</span>
                         <span class="timeline-period">2023.03 ~ 2024.10</span>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">예약 메시지 사용자 수가 늘어나면서 사용자의 요청사항이 많아지면서 다양한 개선 및 기능 추가 진행</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>기존 코드 분석 및 UI 사용성 개선</li>
-                                <li>예약메세지 첨부파일 제공을 위한 파일 업로드를 위한 API 구축</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            기존 Objective-C 코드 Swift 변환<br>
-                            예약메시지 발송 지표 15% 상승
-                        </div>
+                    <p class="timeline-desc">예약 메시지 사용자 증가에 따른 다양한 개선 및 기능 추가</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>기존 코드 분석 및 UI 사용성 개선</li>
+                            <li>예약메세지 첨부파일 업로드 API 구축</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> Objective-C → Swift 변환 / 예약메시지 발송 지표 15% 상승
                     </div>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-card with-image">
-                    <div class="timeline-main">
-                        <div class="timeline-header">
-                            <span class="timeline-title">톡게시판 기능 개발</span>
-                            <span class="timeline-period">2022.03 ~ 2024.12</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="timeline-desc">채팅방안에 사용자들이 게시글을 올릴 수 있는 게시판 기능을 더 많이 사용할 수 있도록 기능 추가</p>
-                            <div class="timeline-section">
-                                <div class="timeline-section-title">주요 업무</div>
-                                <ul class="timeline-list">
-                                    <li>타 플랫폼대비 제공하지 않던 작성기능 제공 (글/사진/파일/투표/이모티콘)</li>
-                                    <li>파일 업로드를 위한 API 구축</li>
-                                    <li>레거시 코드 리팩토링</li>
-                                    <li>다양한 엣지 케이스 제공 및 스펙 기여</li>
-                                </ul>
-                            </div>
-                            <div class="achievement">
-                                <strong>성과:</strong><br>
-                                기존 Objective-C로 작성되어있던 코드를 Swift로 전환하며 MVC에서 MVVM으로 리팩토링하여 유지보수 추가<br>
-                                AFNetworking -> Alamofire 네트워크 변환 및 의존성 분리하여 리팩토링 진행<br>
-                                macOS 카카오톡 게시판 기능은 리소스부족으로 제공하지 못했던 기능들도 Android/iOS/Window와 동일한 수준으로 기능 제공
-                            </div>
-                        </div>
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-title">톡게시판 기능 개발</span>
+                        <span class="timeline-period">2022.03 ~ 2024.12</span>
+                    </div>
+                    <p class="timeline-desc">채팅방 내 게시판 기능을 더 많이 사용할 수 있도록 기능 추가</p>
+                    <div class="timeline-section">
+                        <div class="timeline-section-title">주요 업무</div>
+                        <ul class="timeline-list">
+                            <li>타 플랫폼 대비 미제공 작성기능 개발 (글/사진/파일/투표/이모티콘)</li>
+                            <li>파일 업로드 API 구축</li>
+                            <li>레거시 코드 리팩토링</li>
+                        </ul>
+                    </div>
+                    <div class="achievement">
+                        <strong>성과:</strong> Objective-C → Swift, MVC → MVVM 리팩토링 / AFNetworking → Alamofire 전환 / Android/iOS/Windows 동일 수준 기능 제공
                     </div>
                     <div class="timeline-image">
                         <img src="images/Pasted image 20260110001425.png" alt="톡게시판 스크린샷">
@@ -1128,7 +915,7 @@
         </div>
 
         <!-- Personal Projects -->
-        <h2 id="personal-projects" class="section-title">개인 프로젝트</h2>
+        <h2 class="section-title">개인 프로젝트</h2>
         <div class="personal-grid">
             <div class="personal-card">
                 <div class="personal-image">
@@ -1187,6 +974,13 @@
             </div>
         </div>
 
+        <!-- Education -->
+        <h2 class="section-title">학력</h2>
+        <div class="education">
+            <h3>호서대학교 통계학과 학사 졸업</h3>
+            <span class="period">2014 ~ 2020</span>
+        </div>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="ai-badge">
@@ -1198,33 +992,5 @@
             <p>© 2025 박현수. All rights reserved.</p>
         </footer>
     </div>
-
-    <script>
-        // Scroll spy for sidebar navigation
-        const sections = document.querySelectorAll('section[id], h2[id]');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
-
-        function updateActiveLink() {
-            let current = '';
-            const scrollPos = window.scrollY + 100;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollPos >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', updateActiveLink);
-    </script>
 </body>
 </html>

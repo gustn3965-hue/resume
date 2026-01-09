@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>박현수 | iOS Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f5f5f7;
-            --card: #ffffff;
-            --text: #1d1d1f;
-            --text-secondary: #86868b;
-            --accent: #0071e3;
-            --accent-green: #34c759;
-            --accent-orange: #ff9500;
-            --accent-purple: #af52de;
-            --accent-pink: #ff2d55;
-            --accent-blue: #007aff;
-            --radius: 24px;
+            --bg: #ffffff;
+            --bg-secondary: #f7f6f3;
+            --text: #37352f;
+            --text-secondary: #787774;
+            --text-light: #9b9a97;
+            --border: #e9e9e7;
+            --accent: #2383e2;
+            --tag-red: #fbe4e4;
+            --tag-red-text: #93291c;
+            --tag-blue: #d3e5ef;
+            --tag-blue-text: #183b56;
+            --tag-green: #dbeddb;
+            --tag-green-text: #1e5128;
+            --tag-yellow: #fdecc8;
+            --tag-yellow-text: #7b5c00;
+            --tag-purple: #e8deee;
+            --tag-purple-text: #4a2c63;
+            --tag-gray: #e9e9e7;
+            --tag-gray-text: #5a5a5a;
         }
 
         * {
@@ -27,659 +35,828 @@
         }
 
         body {
-            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+            font-size: 16px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 80px 60px;
         }
 
-        /* Bento Grid */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 16px;
+        /* Header */
+        .header {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .bento-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 28px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bento-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Card Sizes */
-        .col-1 { grid-column: span 1; }
-        .col-2 { grid-column: span 2; }
-        .col-3 { grid-column: span 3; }
-        .col-4 { grid-column: span 4; }
-        .row-2 { grid-row: span 2; }
-
-        /* Hero Card */
-        .hero-card {
-            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2f 100%);
-            color: white;
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 320px;
-        }
-
-        .hero-card h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
             letter-spacing: -0.02em;
-            margin-bottom: 8px;
         }
 
-        .hero-card .role {
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: linear-gradient(90deg, #0071e3, #af52de, #ff2d55);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .header .role {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
-        .hero-contact {
+        .contact-row {
             display: flex;
             gap: 24px;
             flex-wrap: wrap;
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: auto;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
 
-        /* Links Card */
-        .links-card {
+        .links-row {
             display: flex;
-            flex-direction: column;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .links-row a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .links-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title .icon {
+            font-size: 1.1rem;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
             gap: 12px;
         }
 
-        .links-card a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            background: var(--bg);
-            border-radius: 14px;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .links-card a:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .links-card a::after {
-            content: '→';
+        .callout-icon {
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        /* About Card */
-        .about-card {
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            color: white;
-        }
-
-        .about-card .label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            margin-bottom: 16px;
-        }
-
-        .about-card p {
-            font-size: 1.1rem;
+        .callout-content {
+            color: var(--text);
+            font-size: 0.95rem;
             line-height: 1.8;
-            font-weight: 400;
         }
 
-        /* Career Card */
-        .career-card {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-        }
-
-        .career-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 24px;
         }
 
-        .career-logo {
-            width: 56px;
-            height: 56px;
-            background: #fee500;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #1d1d1f;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .career-info h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .career-info span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .position-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .position-item {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 14px;
-            padding: 16px;
-        }
-
-        .position-title {
+        .table th {
+            text-align: left;
+            padding: 8px 12px;
+            background: var(--bg-secondary);
             font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .position-period {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            border: 1px solid var(--border);
         }
 
-        .position-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+        .table td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
         }
 
-        .position-tag {
-            background: rgba(0, 0, 0, 0.06);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--text);
-        }
-
-        /* Project Card */
-        .project-card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card.green { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
-        .project-card.orange { background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%); }
-        .project-card.purple { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
-        .project-card.pink { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
-        .project-card.blue { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
-        .project-card.gray { background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); }
-
-        .project-period {
-            font-size: 0.75rem;
+        .table .company {
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        }
+
+        .table .period {
             color: var(--text-secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .table .position {
+            color: var(--accent);
+            font-weight: 500;
             margin-bottom: 8px;
         }
 
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag-blue { background: var(--tag-blue); color: var(--tag-blue-text); }
+        .tag-green { background: var(--tag-green); color: var(--tag-green-text); }
+        .tag-yellow { background: var(--tag-yellow); color: var(--tag-yellow-text); }
+        .tag-red { background: var(--tag-red); color: var(--tag-red-text); }
+        .tag-purple { background: var(--tag-purple); color: var(--tag-purple-text); }
+        .tag-gray { background: var(--tag-gray); color: var(--tag-gray-text); }
+
+        /* Toggle */
+        .toggle {
             margin-bottom: 12px;
-            color: var(--text);
         }
 
-        .project-desc {
-            font-size: 0.9rem;
+        .toggle-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle-header:hover {
+            background: var(--bg-secondary);
+            margin: 0 -8px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .toggle-icon {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+            margin-top: 4px;
+        }
+
+        .toggle.open .toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .toggle-title {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .toggle-period {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            flex-grow: 1;
+            font-size: 0.9rem;
         }
 
-        .project-achievement {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 12px;
-            padding: 12px 16px;
-            font-size: 0.85rem;
+        .toggle-content {
+            display: none;
+            padding-left: 24px;
+            padding-bottom: 8px;
+        }
+
+        .toggle.open .toggle-content {
+            display: block;
+        }
+
+        .toggle-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .toggle-section {
+            margin-bottom: 12px;
+        }
+
+        .toggle-section-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .toggle-list {
+            list-style: disc;
+            padding-left: 20px;
             color: var(--text);
+            font-size: 0.95rem;
         }
 
-        .project-achievement strong {
-            color: var(--accent);
+        .toggle-list li {
+            margin-bottom: 4px;
         }
 
-        .project-image {
-            margin-top: 16px;
-            border-radius: 12px;
+        .achievement-box {
+            background: var(--tag-blue);
+            color: var(--tag-blue-text);
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: 12px;
+        }
+
+        .achievement-box strong {
+            font-weight: 600;
+        }
+
+        .toggle-image {
+            margin-top: 12px;
+            border-radius: 4px;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            display: inline-block;
         }
 
-        .project-image img {
-            width: 100%;
-            max-width: 260px;
+        .toggle-image img {
+            max-width: 280px;
             height: auto;
             display: block;
         }
 
-        /* Stat Card */
-        .stat-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 160px;
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
-        .stat-card.dark {
-            background: linear-gradient(135deg, #1d1d1f 0%, #3d3d3f 100%);
-            color: white;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .stat-card.dark .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Personal Project Card */
-        .personal-card {
+        .gallery-item {
+            border: 1px solid var(--border);
+            border-radius: 4px;
             overflow: hidden;
-            padding: 0;
+            transition: box-shadow 0.2s;
         }
 
-        .personal-image {
+        .gallery-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .gallery-image {
             width: 100%;
             height: 160px;
-            background: var(--bg);
+            background: var(--bg-secondary);
             overflow: hidden;
         }
 
-        .personal-image img {
+        .gallery-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .personal-content {
-            padding: 20px;
+        .gallery-content {
+            padding: 16px;
         }
 
-        .personal-content h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .gallery-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .personal-content .period {
+        .gallery-content .period {
             font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .personal-content p {
+        .gallery-content p {
             font-size: 0.85rem;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .personal-content a {
+        .gallery-content a {
             color: var(--accent);
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 500;
         }
 
-        /* Education Card */
-        .education-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        .gallery-content a:hover {
+            text-decoration: underline;
         }
 
-        .education-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
         }
 
-        .education-card span {
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 0;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* AI Badge Card */
-        .ai-card {
-            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2f 100%);
-            color: white;
-            display: flex;
+        .ai-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .ai-card svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Section Title */
-        .section-title-card {
-            display: flex;
-            align-items: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: transparent;
-            padding: 20px 0;
-        }
-
-        .section-title-card:hover {
-            transform: none;
-            box-shadow: none;
+            gap: 6px;
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: var(--text);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
             }
-            .col-3, .col-4 { grid-column: span 2; }
-        }
 
-        @media (max-width: 640px) {
-            .bento-grid {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
                 grid-template-columns: 1fr;
             }
-            .col-1, .col-2, .col-3, .col-4 { grid-column: span 1; }
-            .row-2 { grid-row: span 1; }
-            .hero-card h1 { font-size: 2.5rem; }
-            .hero-contact { flex-direction: column; gap: 8px; }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 4px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Hero Section -->
-        <div class="bento-grid">
-            <div class="bento-card hero-card col-3">
-                <div>
-                    <h1>박현수</h1>
-                    <p class="role">iOS Developer</p>
-                </div>
-                <div class="hero-contact">
-                    <span>1995.03.06</span>
-                    <span>010-2004-6565</span>
-                    <span>gustn3965@naver.com</span>
-                </div>
+        <!-- Header -->
+        <header class="header">
+            <h1>박현수</h1>
+            <p class="role">iOS Developer</p>
+            <div class="contact-row">
+                <span>1995.03.06</span>
+                <span>010-2004-6565</span>
+                <span>gustn3965@naver.com</span>
             </div>
-            <div class="bento-card links-card col-1 row-2">
-                <a href="https://vapor3965.tistory.com" target="_blank">Tech Blog</a>
-                <a href="https://github.com/gustn3965" target="_blank">GitHub</a>
-                <a href="https://blog.naver.com/gustn3964" target="_blank">Blog</a>
+            <div class="links-row">
+                <a href="https://vapor3965.tistory.com" target="_blank">Tech Blog ↗</a>
+                <a href="https://github.com/gustn3965" target="_blank">GitHub ↗</a>
+                <a href="https://blog.naver.com/gustn3964" target="_blank">Blog ↗</a>
             </div>
-            <div class="bento-card about-card col-3">
-                <div class="label">About Me</div>
-                <p>팀 내에서 반복적으로 발생하는 문제를 개선하거나 자동화하는 작업에 적극적으로 관심을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다.</p>
-            </div>
-        </div>
+        </header>
 
-        <!-- Career Section -->
-        <div class="bento-grid">
-            <div class="bento-card career-card col-2 row-2">
-                <div class="career-header">
-                    <div class="career-logo">K</div>
-                    <div class="career-info">
-                        <h3>카카오</h3>
-                        <span>2021.11 ~ 현재</span>
-                    </div>
-                </div>
-                <div class="position-list">
-                    <div class="position-item">
-                        <div class="position-title">카카오맵 iOS Developer</div>
-                        <div class="position-period">2025.01 ~ 현재</div>
-                        <div class="position-tags">
-                            <span class="position-tag">장소정보 UI/UX</span>
-                            <span class="position-tag">포토피커</span>
-                            <span class="position-tag">CI/CD</span>
-                            <span class="position-tag">Tuist</span>
-                        </div>
-                    </div>
-                    <div class="position-item">
-                        <div class="position-title">카카오톡 macOS Developer</div>
-                        <div class="position-period">2021.11 ~ 2024.12</div>
-                        <div class="position-tags">
-                            <span class="position-tag">신고 UI</span>
-                            <span class="position-tag">게시판</span>
-                            <span class="position-tag">예약메시지</span>
-                            <span class="position-tag">채팅 캡처</span>
-                            <span class="position-tag">Swift 변환</span>
-                        </div>
-                    </div>
+        <!-- About -->
+        <section class="section">
+            <div class="callout">
+                <span class="callout-icon">💡</span>
+                <div class="callout-content">
+                    팀 내에서 반복적으로 발생하는 문제를 개선하거나 자동화하는 작업에 적극적으로 관심을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다. 실무진에서 침묵하기보다는 저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음을 가지고 행동하고 있습니다.
                 </div>
             </div>
-            <div class="bento-card stat-card dark col-1">
-                <div class="stat-number">5+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="bento-card stat-card col-1">
-                <div class="stat-number" style="color: var(--accent);">15+</div>
-                <div class="stat-label">Projects</div>
-            </div>
-            <div class="bento-card education-card col-2">
-                <h3>호서대학교 통계학과 학사</h3>
-                <span>2014 ~ 2020</span>
-            </div>
-        </div>
+        </section>
+
+        <!-- Career -->
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💼</span> 경력</h2>
+            <table class="table">
+                <tr>
+                    <th style="width: 120px;">기간</th>
+                    <th style="width: 100px;">회사</th>
+                    <th>역할</th>
+                </tr>
+                <tr>
+                    <td class="period">2025.01 ~ 현재</td>
+                    <td class="company">카카오</td>
+                    <td>
+                        <div class="position">카카오맵 iOS Developer</div>
+                        <div class="tags">
+                            <span class="tag tag-blue">장소정보 UI/UX</span>
+                            <span class="tag tag-blue">포토피커</span>
+                            <span class="tag tag-green">CI/CD</span>
+                            <span class="tag tag-green">Tuist</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="period">2021.11 ~ 2024.12</td>
+                    <td class="company">카카오</td>
+                    <td>
+                        <div class="position">카카오톡 macOS Developer</div>
+                        <div class="tags">
+                            <span class="tag tag-purple">신고 UI</span>
+                            <span class="tag tag-purple">게시판</span>
+                            <span class="tag tag-purple">예약메시지</span>
+                            <span class="tag tag-purple">채팅 캡처</span>
+                            <span class="tag tag-yellow">Swift 변환</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
 
         <!-- 카카오맵 Projects -->
-        <div class="bento-card section-title-card col-4">카카오맵 프로젝트</div>
-        <div class="bento-grid">
-            <div class="bento-card project-card green col-2">
-                <div class="project-period">2025.05 ~ 진행중</div>
-                <div class="project-title">장소상세 기능 개발</div>
-                <div class="project-desc">동영상 후기 첨부, 광고 개선, SwiftUI UI 구현, A/B 테스트 적용</div>
-                <div class="project-achievement">
-                    <strong>광고 MoM 59% 증가</strong> / 의존성 분리 리팩토링으로 안정성 향상
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🗺️</span> 프로젝트 (카카오맵)</h2>
+
+            <div class="toggle open">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">장소상세 기능 개발</span>
+                    <span class="toggle-period">2025.05 ~ 진행중</span>
                 </div>
-                <div class="project-image">
-                    <img src="images/Pasted image 20260110012748.png" alt="장소상세">
-                </div>
-            </div>
-            <div class="bento-card project-card purple col-2">
-                <div class="project-period">2025.04 ~ 2025.05</div>
-                <div class="project-title">포토피커 리팩토링</div>
-                <div class="project-desc">복잡도 높았던 레거시 코드를 클린아키텍처 + SwiftUI로 재구성</div>
-                <div class="project-achievement">
-                    수만장 진입 속도 <strong>8초 → 3초</strong> 개선
-                </div>
-                <div class="project-image">
-                    <img src="images/Pasted image 20260110011950.png" alt="포토피커">
-                </div>
-            </div>
-            <div class="bento-card project-card orange col-1">
-                <div class="project-period">2025.08 ~ 2025.09</div>
-                <div class="project-title">Jenkins 자동화</div>
-                <div class="project-desc">Apple Developer 업로드 완전 자동화</div>
-                <div class="project-achievement">
-                    연간 <strong>60시간</strong> 생산성 향상
+                <div class="toggle-content">
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>동영상 후기 첨부 기능 설계, 동영상 플랫폼과 주도적 협업</li>
+                            <li>iOS iCloud 저장소 특성 고려 및 스펙 기여</li>
+                            <li>다양한 지면 광고 노출 확대 UI 수정</li>
+                            <li>SwiftUI로 UI 구현 및 매끄러운 트랜지션 설계</li>
+                            <li>View 노출 기반 로그 전송 구현</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 광고 MoM 59% 증가 / 의존성 분리 리팩토링으로 안정성 향상
+                    </div>
+                    <div class="toggle-image">
+                        <img src="images/Pasted image 20260110012748.png" alt="장소상세">
+                    </div>
                 </div>
             </div>
-            <div class="bento-card project-card blue col-1">
-                <div class="project-period">2025.07 ~ 2025.08</div>
-                <div class="project-title">번역시트 개선</div>
-                <div class="project-desc">구글시트 반영 자동화 + 누락 검사</div>
-                <div class="project-achievement">
-                    연간 <strong>60시간</strong> 절약
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">포토피커 리팩토링</span>
+                    <span class="toggle-period">2025.04 ~ 2025.05</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">오랫동안 방치되어 복잡도가 높았던 포토피커 코드를 자발적으로 개선</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>기획서 없이 기존 스펙과 동일하도록 코드 분석 및 설계</li>
+                            <li>의존성 분리하여 모듈로 구현 및 샘플앱 구현</li>
+                            <li>수만장 기준 성능 테스트</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 클린아키텍처 + SwiftUI로 재구성 / 수만장 진입 속도 8초 → 3초 개선
+                    </div>
+                    <div class="toggle-image">
+                        <img src="images/Pasted image 20260110011950.png" alt="포토피커">
+                    </div>
                 </div>
             </div>
-            <div class="bento-card project-card gray col-1">
-                <div class="project-period">2025.07</div>
-                <div class="project-title">Tuist 모듈 계층</div>
-                <div class="project-desc">SwiftSyntax로 모듈 의존성 검증</div>
-            </div>
-            <div class="bento-card project-card pink col-1">
-                <div class="project-period">2025.01 ~ 2025.02</div>
-                <div class="project-title">인증서 자동화</div>
-                <div class="project-desc">fastlane으로 인증서 공유</div>
-                <div class="project-achievement">
-                    인원 제한 <strong>10명 → 무제한</strong>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">Jenkins 빌드 업로드 자동화</span>
+                    <span class="toggle-period">2025.08 ~ 2025.09</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">사내 배포 시스템에서 Apple Developer로의 반복적 수작업 업로드를 없애기 위해 완전 자동화 파이프라인을 자발적으로 설계·구축</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>사내 인프라를 사용하여 서버 구축 및 Jenkins, fastlane 사용</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 연간 60시간 생산성 향상 (30분 × 10번 × 12개월)
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">프로젝트 번역시트 개선</span>
+                    <span class="toggle-period">2025.07 ~ 2025.08</span>
+                </div>
+                <div class="toggle-content">
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>구글시트 기반 번역 문구 반영 과정을 하나의 명령어로 자동화</li>
+                            <li>번역 키 누락 이슈 방지를 위한 릴리즈 전 검사 코드 구현</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 연간 60시간 절약 (5분 × 5번 × 12명 × 12개월)
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">Tuist 모듈 계층 부여</span>
+                    <span class="toggle-period">2025.07</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">모듈 수 증가에 따른 역할 모호함과 같은 계층의 의존성 참조 방지를 위해 자발적으로 검증 코드 구현</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>SwiftSyntax를 이용한 코드 분석 및 Tuist 코드 수정</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 프로젝트 생성시 자동 검증, 계층별 모듈 시각적 확인 가능
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">인증서 자동화</span>
+                    <span class="toggle-period">2025.01 ~ 2025.02</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">팀원 규모 확대에 따라 인증서 관리가 비효율적으로 변하여 개선</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>automatic → manual 인증서 방식 변경</li>
+                            <li>fastlane을 이용한 인증서 공유 적용</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 인원 제한 해제 (10명 → 무제한), iOS 외 맵 SDK 개발자도 빌드 가능
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
 
         <!-- 카카오톡 Projects -->
-        <div class="bento-card section-title-card col-4">카카오톡 프로젝트</div>
-        <div class="bento-grid">
-            <div class="bento-card project-card blue col-2">
-                <div class="project-period">2022.03 ~ 2024.12</div>
-                <div class="project-title">톡게시판 기능 개발</div>
-                <div class="project-desc">타 플랫폼 대비 미제공 작성기능 개발, Obj-C → Swift, MVC → MVVM 리팩토링</div>
-                <div class="project-achievement">
-                    Android/iOS/Windows <strong>동일 수준</strong> 기능 제공
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💬</span> 프로젝트 (카카오톡)</h2>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">톡게시판 기능 개발</span>
+                    <span class="toggle-period">2022.03 ~ 2024.12</span>
                 </div>
-                <div class="project-image">
-                    <img src="images/Pasted image 20260110001425.png" alt="톡게시판">
-                </div>
-            </div>
-            <div class="bento-card project-card green col-2">
-                <div class="project-period">2023.03 ~ 2024.12</div>
-                <div class="project-title">신고 기능 개발</div>
-                <div class="project-desc">파편화된 신고 UI 통일, 클린 아키텍처 적용, UI 프리뷰 제공</div>
-                <div class="project-achievement">
-                    디자이너 협업 효율화 / <strong>다양한 신고 유형</strong> 지원
-                </div>
-            </div>
-            <div class="bento-card project-card orange col-1">
-                <div class="project-period">2023.03 ~ 2024.10</div>
-                <div class="project-title">예약메시지</div>
-                <div class="project-desc">UI 개선 + 첨부파일 지원</div>
-                <div class="project-achievement">
-                    발송 지표 <strong>15% 상승</strong>
+                <div class="toggle-content">
+                    <p class="toggle-desc">채팅방 내 게시판 기능을 더 많이 사용할 수 있도록 기능 추가</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>타 플랫폼 대비 미제공 작성기능 개발 (글/사진/파일/투표/이모티콘)</li>
+                            <li>파일 업로드 API 구축</li>
+                            <li>레거시 코드 리팩토링</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> Objective-C → Swift, MVC → MVVM 리팩토링 / Android/iOS/Windows 동일 수준 기능 제공
+                    </div>
+                    <div class="toggle-image">
+                        <img src="images/Pasted image 20260110001425.png" alt="톡게시판">
+                    </div>
                 </div>
             </div>
-            <div class="bento-card project-card purple col-1">
-                <div class="project-period">2023.03 ~ 2023.07</div>
-                <div class="project-title">채팅방 캡처</div>
-                <div class="project-desc">프로필 모자이크, 메모리 최적화</div>
-                <div class="project-achievement">
-                    자발적 기능 발제 및 구현
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">신고 기능 개발</span>
+                    <span class="toggle-period">2023.03 ~ 2024.12</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">사용자의 부적절한 메시지, 허위 프로필 등에 대한 신고 기능 개선 및 추가</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>파편화된 신고 UI 통일을 위한 구조 설계</li>
+                            <li>오픈채팅, 팀채팅, 일반채팅, 프로필이미지 등 신고 기능 제공</li>
+                            <li>이미지 업로드 API 구축</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 클린 아키텍처 적용 / UI 프리뷰 제공으로 디자이너 협업 효율화
+                    </div>
                 </div>
             </div>
-            <div class="bento-card project-card gray col-1">
-                <div class="project-period">2023.11 ~ 2024.01</div>
-                <div class="project-title">파일 전송 전환</div>
-                <div class="project-desc">소켓 → REST API 전환</div>
-            </div>
-            <div class="bento-card project-card pink col-1">
-                <div class="project-period">2024.09 ~ 2024.12</div>
-                <div class="project-title">Tuist 도입</div>
-                <div class="project-desc">오픈소스 기여</div>
-                <div class="project-achievement">
-                    <a href="https://vapor3965.tistory.com/126" target="_blank" style="color: var(--accent);">이슈 제보 →</a>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">예약메시지 기능 개발</span>
+                    <span class="toggle-period">2023.03 ~ 2024.10</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">예약 메시지 사용자 증가에 따른 다양한 개선 및 기능 추가</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>기존 코드 분석 및 UI 사용성 개선</li>
+                            <li>예약메세지 첨부파일 업로드 API 구축</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> Objective-C → Swift 변환 / 예약메시지 발송 지표 15% 상승
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">채팅방 캡처 기능 개발</span>
+                    <span class="toggle-period">2023.03 ~ 2023.07</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">채팅방 메시지들을 캡처하여 저장하는 기능 개발</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>다양한 메시지 타입, 채팅방 코드베이스 분석 및 설계</li>
+                            <li>프로필 모자이크/카카오프렌즈 적용 구조 설계</li>
+                            <li>캡처시 메모리 이슈 등 성능 안정성 향상</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 자발적으로 기능 발제 및 구현 / iOS/Windows 대비 안정성 향상
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">오픈채팅 파일 전송/다운로드 전환</span>
+                    <span class="toggle-period">2023.11 ~ 2024.01</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">신규서버 이관에 따라 소켓 파일업로드를 REST API로 변경</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>다양한 파일 타입 REST API 구현 (포토, 동영상, 오디오 등)</li>
+                            <li>30장, 200MB 최대 스펙에서 성능이슈 없도록 구현</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> Objective-C → Swift 전환, 의존성 분리로 유지보수성 향상
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">Tuist 도입 시도</span>
+                    <span class="toggle-period">2024.09 ~ 2024.12</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">모듈분리 및 SPM 사용시 빌드 속도 향상, xcodeproj merge conflict 방지 등의 장점으로 도입 시도</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>기존 Xcode 프로젝트 세팅 분석 및 검증</li>
+                            <li>마이그레이션 설계 및 작업</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 특정 스킴 빌드 속도 저하 발견 / <a href="https://vapor3965.tistory.com/126" target="_blank">Tuist 오픈소스 기여 ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="toggle-icon">▶</span>
+                    <span class="toggle-title">XCTest 도입</span>
+                    <span class="toggle-period">2024.01 ~ 2024.02</span>
+                </div>
+                <div class="toggle-content">
+                    <p class="toggle-desc">오래된 프로젝트로 XCTest target이 없었고, 유지보수를 위해 자발적으로 도입</p>
+                    <div class="toggle-section">
+                        <div class="toggle-section-title">주요 업무</div>
+                        <ul class="toggle-list">
+                            <li>XCTest target 추가를 위한 프로젝트 세팅 전반 점검</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-box">
+                        <strong>성과:</strong> 신규기능 도입 안정성 제공, 다른 개발자도 쉽게 기능 추가 가능
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
 
         <!-- Personal Projects -->
-        <div class="bento-card section-title-card col-4">개인 프로젝트</div>
-        <div class="bento-grid">
-            <div class="bento-card personal-card col-1">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021953.png" alt="AI단어암기장">
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 개인 프로젝트</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/Pasted image 20260110021953.png" alt="AI단어암기장">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>AI단어암기장</h3>
+                        <div class="period">2024.12 ~ 2025.02</div>
+                        <p>AI를 이용하여 단어들을 문장으로 만들어 더 효과적으로 암기할 수 있는 iOS 앱. 클린아키텍쳐 기반, SwiftUI.</p>
+                        <a href="https://apps.apple.com/kr/app/ai%EB%8B%A8%EC%96%B4%EC%95%94%EA%B8%B0%EC%9E%A5/id6740163477" target="_blank">App Store ↗</a>
+                    </div>
                 </div>
-                <div class="personal-content">
-                    <h3>AI단어암기장</h3>
-                    <div class="period">2024.12 ~ 2025.02</div>
-                    <p>AI로 단어를 문장으로 만들어 암기하는 iOS 앱</p>
-                    <a href="https://apps.apple.com/kr/app/ai%EB%8B%A8%EC%96%B4%EC%95%94%EA%B8%B0%EC%9E%A5/id6740163477" target="_blank">App Store →</a>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/Pasted image 20260110021326.png" alt="머니챌린지">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>머니챌린지</h3>
+                        <div class="period">2024.05 ~ 2024.07</div>
+                        <p>직접 사용하기 위해 만든 가계부 Flutter 앱. 한 달 지출을 30일로 나눠 매일 쓸 금액을 보여주는 기능.</p>
+                        <a href="https://apps.apple.com/kr/app/%EB%A8%B8%EB%8B%88%EC%B1%8C%EB%A6%B0%EC%A7%80/id6504971575" target="_blank">App Store ↗</a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/Pasted image 20260110021939.png" alt="띵로그">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>띵로그</h3>
+                        <div class="period">2021.12 ~ 2022.02</div>
+                        <p>자신이 좋아하는 물건들을 기록하는 앱. iOS 2명, 디자이너 1명 팀 프로젝트.</p>
+                        <a href="https://apps.apple.com/kr/app/%EB%9D%B5%EB%A1%9C%EA%B7%B8/id1586982199" target="_blank">App Store ↗</a>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/Pasted image 20260110021929.png" alt="쉬운 과제 캘린더">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>쉬운 과제 캘린더</h3>
+                        <div class="period">2020.04 ~ 2021.09</div>
+                        <p>첫 앱이자 1년 넘게 유지보수하며 사용자 피드백을 반영하며 성장한 앱.</p>
+                        <a href="https://apps.apple.com/kr/app/%EC%89%AC%EC%9A%B4-%EA%B3%BC%EC%A0%9C-%EC%BA%98%EB%A6%B0%EB%8D%94/id1506355497" target="_blank">App Store ↗</a>
+                    </div>
                 </div>
             </div>
-            <div class="bento-card personal-card col-1">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021326.png" alt="머니챌린지">
-                </div>
-                <div class="personal-content">
-                    <h3>머니챌린지</h3>
-                    <div class="period">2024.05 ~ 2024.07</div>
-                    <p>매일 쓸 금액을 정해주는 가계부 Flutter 앱</p>
-                    <a href="https://apps.apple.com/kr/app/%EB%A8%B8%EB%8B%88%EC%B1%8C%EB%A6%B0%EC%A7%80/id6504971575" target="_blank">App Store →</a>
-                </div>
-            </div>
-            <div class="bento-card personal-card col-1">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021939.png" alt="띵로그">
-                </div>
-                <div class="personal-content">
-                    <h3>띵로그</h3>
-                    <div class="period">2021.12 ~ 2022.02</div>
-                    <p>좋아하는 물건들을 기록하는 앱 (팀 프로젝트)</p>
-                    <a href="https://apps.apple.com/kr/app/%EB%9D%B5%EB%A1%9C%EA%B7%B8/id1586982199" target="_blank">App Store →</a>
-                </div>
-            </div>
-            <div class="bento-card personal-card col-1">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021929.png" alt="쉬운 과제 캘린더">
-                </div>
-                <div class="personal-content">
-                    <h3>쉬운 과제 캘린더</h3>
-                    <div class="period">2020.04 ~ 2021.09</div>
-                    <p>첫 앱, 1년 넘게 유지보수하며 성장</p>
-                    <a href="https://apps.apple.com/kr/app/%EC%89%AC%EC%9A%B4-%EA%B3%BC%EC%A0%9C-%EC%BA%98%EB%A6%B0%EB%8D%94/id1506355497" target="_blank">App Store →</a>
-                </div>
-            </div>
-        </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎓</span> 학력</h2>
+            <table class="table">
+                <tr>
+                    <th style="width: 120px;">기간</th>
+                    <th style="width: 150px;">학교</th>
+                    <th>전공</th>
+                </tr>
+                <tr>
+                    <td class="period">2014 ~ 2020</td>
+                    <td class="company">호서대학교</td>
+                    <td>통계학과 학사 졸업</td>
+                </tr>
+            </table>
+        </section>
 
         <!-- Footer -->
-        <div class="bento-grid">
-            <div class="bento-card ai-card col-4">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                Made with Claude AI
+        <footer class="footer">
+            <div class="ai-badge">
+                ✨ Made with Claude AI
             </div>
-        </div>
+            <p>© 2025 박현수. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
