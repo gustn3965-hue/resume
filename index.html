@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>박현수 | iOS Developer</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="박현수 | iOS Developer">
+    <meta property="og:description" content="카카오맵, 카카오톡 iOS/macOS 개발자 박현수입니다.">
+    <meta property="og:image" content="images/thumbnail.png">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="박현수 | iOS Developer">
+    <meta name="twitter:description" content="카카오맵, 카카오톡 iOS/macOS 개발자 박현수입니다.">
+    <meta name="twitter:image" content="images/thumbnail.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -51,21 +63,97 @@
         /* Sidebar Navigation */
         .sidebar {
             position: fixed;
-            left: max(20px, calc((100vw - 1400px) / 2));
-            top: 50%;
-            transform: translateY(-50%);
-            width: 180px;
             z-index: 100;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .sidebar-nav {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Desktop: right side, vertical */
+        @media (min-width: 1100px) {
+            .sidebar {
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 180px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .sidebar-nav {
+                border-radius: 16px;
+                padding: 20px;
+            }
+
+            .sidebar-nav .sub-menu {
+                display: block;
+            }
+        }
+
+        /* Mobile/Tablet: bottom, horizontal */
+        @media (max-width: 1099px) {
+            .sidebar {
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .sidebar-nav {
+                border-radius: 16px 16px 0 0;
+                padding: 10px 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .sidebar-nav > ul {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 0;
+                padding: 0 12px;
+                width: max-content;
+            }
+
+            .sidebar-nav > ul > li {
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .sidebar-nav a {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+
+            .sidebar-nav .sub-menu {
+                display: flex;
+                flex-wrap: nowrap;
+                margin: 0;
+                padding: 0;
+                border-left: 1px solid var(--gray-200);
+                margin-left: 4px;
+                padding-left: 4px;
+            }
+
+            .sidebar-nav .sub-menu li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-nav .sub-menu a {
+                font-size: 0.7rem;
+                padding: 6px 8px;
+                color: var(--gray-400);
+            }
         }
 
         .sidebar-nav ul {
@@ -93,18 +181,33 @@
             background: var(--gray-50);
         }
 
-        .sidebar-nav a.active {
-            color: var(--primary);
-            background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
-            border-left-color: var(--primary);
-            font-weight: 600;
+
+        .sidebar-nav .sub-menu {
+            margin-left: 12px;
+            margin-top: 4px;
+            padding-left: 10px;
+            border-left: 1px solid var(--gray-200);
         }
+
+        .sidebar-nav .sub-menu li {
+            margin-bottom: 2px;
+        }
+
+        .sidebar-nav .sub-menu a {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            color: var(--gray-400);
+        }
+
+        .sidebar-nav .sub-menu a:hover {
+            color: var(--gray-600);
+        }
+
 
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 60px 24px;
-            margin-left: 220px;
         }
 
         /* Header */
@@ -189,6 +292,14 @@
             line-height: 1.9;
         }
 
+        .about mark {
+            background: linear-gradient(120deg, #dbeafe 0%, #ede9fe 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
         /* Section Title */
         .section-title {
             font-size: 1.8rem;
@@ -230,6 +341,7 @@
         .timeline-item {
             position: relative;
             margin-bottom: 40px;
+            scroll-margin-top: 40px;
         }
 
         .timeline-item:last-child {
@@ -332,25 +444,17 @@
 
         .timeline-list {
             list-style: none;
+            padding-left: 12px;
+            border-left: 2px solid var(--gray-200);
+            margin-left: 2px;
         }
 
         .timeline-list li {
             position: relative;
-            padding-left: 16px;
+            padding-left: 8px;
             margin-bottom: 6px;
             color: var(--gray-700);
             font-size: 0.95rem;
-        }
-
-        .timeline-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 5px;
-            height: 5px;
-            background: var(--primary);
-            border-radius: 50%;
         }
 
         .achievement {
@@ -462,13 +566,18 @@
 
         .work-section {
             margin-bottom: 12px;
+            margin-left: 16px;
+            padding-left: 12px;
+            border-left: 2px solid var(--gray-200);
         }
 
         .work-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--gray-500);
+            color: var(--gray-400);
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Personal Projects */
@@ -608,16 +717,6 @@
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .sidebar {
-                display: none;
-            }
-
-            .container {
-                margin-left: auto;
-            }
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 40px 16px;
@@ -674,8 +773,29 @@
                 <li><a href="#about" class="active">소개</a></li>
                 <li><a href="#education">학력</a></li>
                 <li><a href="#career">경력</a></li>
-                <li><a href="#projects-kakaomap">카카오맵</a></li>
-                <li><a href="#projects-kakaotalk">카카오톡</a></li>
+                <li>
+                    <a href="#projects-kakaomap">카카오맵</a>
+                    <ul class="sub-menu">
+                        <li><a href="#project-jenkins">Jenkins 자동화</a></li>
+                        <li><a href="#project-translation">번역시트 개선</a></li>
+                        <li><a href="#project-tuist-layer">Tuist 모듈 계층</a></li>
+                        <li><a href="#project-place-detail">장소상세</a></li>
+                        <li><a href="#project-photopicker">포토피커</a></li>
+                        <li><a href="#project-certificate">인증서 자동화</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#projects-kakaotalk">카카오톡</a>
+                    <ul class="sub-menu">
+                        <li><a href="#project-tuist-try">Tuist 도입</a></li>
+                        <li><a href="#project-xctest">XCTest 도입</a></li>
+                        <li><a href="#project-openchat-file">오픈채팅 파일</a></li>
+                        <li><a href="#project-report">신고 기능</a></li>
+                        <li><a href="#project-capture">채팅방 캡처</a></li>
+                        <li><a href="#project-scheduled">예약메시지</a></li>
+                        <li><a href="#project-board">톡게시판</a></li>
+                    </ul>
+                </li>
                 <li><a href="#personal-projects">개인 프로젝트</a></li>
             </ul>
         </div>
@@ -694,13 +814,13 @@
             <div class="links">
                 <a href="https://vapor3965.tistory.com" target="_blank">Tech Blog</a>
                 <a href="https://github.com/gustn3965" target="_blank">GitHub</a>
-                <a href="https://blog.naver.com/gustn3964" target="_blank">Blog</a>
+                <a href="https://blog.naver.com/gustn3964" target="_blank">Deprecated Blog</a>
             </div>
         </header>
 
         <!-- About -->
         <section id="about" class="about">
-            <p>팀 내에서 반복적으로 발생하는 문제를 개선하거나 자동화하는 작업에 적극적으로 관심을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다. 실무진에서 침묵하기보다는 저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음을 가지고 행동하고 있습니다.</p>
+            <p>팀 내에서 반복적으로 발생하는 <mark>문제를 개선하거나 자동화하는 작업에 적극적으로 관심</mark>을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다.<br><br>실무진에서 침묵하기보다는 <mark>저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음</mark>을 가지고 행동하고 있습니다.</p>
         </section>
 
         <!-- Education -->
@@ -725,14 +845,14 @@
                 <div class="position-title">카카오맵 iOS Developer</div>
                 <div class="position-period">2025.01 ~ 현재</div>
                 <div class="work-section">
-                    <div class="work-label">비즈니스</div>
+                    <div class="work-label">Business Work</div>
                     <div class="tags">
                         <span class="tag">장소정보 UI/UX</span>
                         <span class="tag">커스텀 포토피커</span>
                     </div>
                 </div>
                 <div class="work-section">
-                    <div class="work-label">플랫폼</div>
+                    <div class="work-label">Platform Work</div>
                     <div class="tags">
                         <span class="tag">CI/CD</span>
                         <span class="tag">Jenkins</span>
@@ -746,7 +866,7 @@
                 <div class="position-title">카카오톡 macOS Developer</div>
                 <div class="position-period">2021.11 ~ 2024.12</div>
                 <div class="work-section">
-                    <div class="work-label">비즈니스</div>
+                    <div class="work-label">Business Work</div>
                     <div class="tags">
                         <span class="tag">신고 UI</span>
                         <span class="tag">게시판 UI & 작성</span>
@@ -756,7 +876,7 @@
                     </div>
                 </div>
                 <div class="work-section">
-                    <div class="work-label">플랫폼</div>
+                    <div class="work-label">Platform Work</div>
                     <div class="tags">
                         <span class="tag">Swift & MVVM 변환</span>
                     </div>
@@ -767,7 +887,7 @@
         <!-- 카카오맵 Projects -->
         <h2 id="projects-kakaomap" class="section-title">프로젝트 (카카오맵)</h2>
         <div class="timeline">
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-jenkins">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">Jenkins 이용한 빌드 업로드 자동화</span>
@@ -789,7 +909,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-translation">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">프로젝트 번역시트 개선</span>
@@ -816,7 +936,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-tuist-layer">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">Tuist 모듈 계층 부여</span>
@@ -838,7 +958,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-place-detail">
                 <div class="timeline-card with-image">
                     <div class="timeline-main">
                         <div class="timeline-header">
@@ -892,7 +1012,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-photopicker">
                 <div class="timeline-card with-image">
                     <div class="timeline-main">
                         <div class="timeline-header">
@@ -922,7 +1042,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-certificate">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">인증서 자동화</span>
@@ -949,7 +1069,7 @@
         <!-- 카카오톡 Projects -->
         <h2 id="projects-kakaotalk" class="section-title">프로젝트 (카카오톡)</h2>
         <div class="timeline">
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-tuist-try">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">Tuist 도입 시도</span>
@@ -973,7 +1093,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-xctest">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">XCTest 도입</span>
@@ -995,7 +1115,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-openchat-file">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">오픈채팅 파일 전송/다운로드 전환</span>
@@ -1018,7 +1138,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-report">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">신고 기능 개발</span>
@@ -1046,7 +1166,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-capture">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">채팅방 캡처 기능 개발</span>
@@ -1070,7 +1190,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-scheduled">
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <span class="timeline-title">예약메시지 기능 개발</span>
@@ -1094,7 +1214,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" id="project-board">
                 <div class="timeline-card with-image">
                     <div class="timeline-main">
                         <div class="timeline-header">
@@ -1200,31 +1320,7 @@
     </div>
 
     <script>
-        // Scroll spy for sidebar navigation
-        const sections = document.querySelectorAll('section[id], h2[id]');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
-
-        function updateActiveLink() {
-            let current = '';
-            const scrollPos = window.scrollY + 100;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollPos >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', updateActiveLink);
+        // No scroll show/hide needed - sidebar always visible
     </script>
 </body>
 </html>
