@@ -290,6 +290,11 @@
             color: var(--gray-600);
             font-size: 1.05rem;
             line-height: 1.9;
+            margin-bottom: 12px;
+        }
+
+        .about p:last-child {
+            margin-bottom: 0;
         }
 
         .about mark {
@@ -788,6 +793,7 @@
                     <a href="#projects-kakaotalk">카카오톡</a>
                     <ul class="sub-menu">
                         <li><a href="#project-tuist-try">Tuist 도입</a></li>
+                        <li><a href="#project-storage">저장공간 관리</a></li>
                         <li><a href="#project-xctest">XCTest 도입</a></li>
                         <li><a href="#project-openchat-file">오픈채팅 파일</a></li>
                         <li><a href="#project-report">신고 기능</a></li>
@@ -820,7 +826,9 @@
 
         <!-- About -->
         <section id="about" class="about">
-            <p>팀 내에서 반복적으로 발생하는 <mark>문제를 개선하거나 자동화하는 작업에 적극적으로 관심</mark>을 가지고 있습니다. 단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다.<br><br>실무진에서 침묵하기보다는 <mark>저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음</mark>을 가지고 행동하고 있습니다.</p>
+            <p>팀 내에서 반복적으로 발생하는 <mark>문제를 개선하거나 자동화하는 작업에도 적극적으로 관심</mark>을 가지고 있습니다.</p>
+            <p>단순 개발을 넘어 사용자 입장에서 고민하고 많은 의견을 내면서 카카오톡, 카카오맵 서비스를 만들어왔습니다.</p>
+            <p>실무진에서 침묵하기보다는 <mark>저의 말 한마디로 인해 사용자들에게 더 나은 서비스를 제공할 수 있다는 믿음</mark>을 가지고 행동하고 있습니다.</p>
         </section>
 
         <!-- Education -->
@@ -1093,6 +1101,36 @@
                 </div>
             </div>
 
+            <div class="timeline-item" id="project-storage">
+                <div class="timeline-card with-image">
+                    <div class="timeline-main">
+                        <div class="timeline-header">
+                            <span class="timeline-title">저장공간 통합 관리 기능</span>
+                            <span class="timeline-period">2024.08</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="timeline-desc">모든 채팅방의 데이터를 한번에 관리할 수 있는 니즈가 생기고, 주도적으로 발제하여 기능 구현</p>
+                            <div class="timeline-section">
+                                <div class="timeline-section-title">주요 업무</div>
+                                <ul class="timeline-list">
+                                    <li>채팅방 db 구조 파악 및 캐시 구조 파악</li>
+                                    <li>의존성 분리하여 샘플앱 개발</li>
+                                    <li>Swift Concurrency 이용하여 개발</li>
+                                </ul>
+                            </div>
+                            <div class="achievement">
+                                <strong>성과:</strong><br>
+                                샘플앱을 통해서 디자이너와 필터링 시간 단축<br>
+                                의존성 주입 및 테스트코드 작성으로 유지보수 향상
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-image">
+                        <img src="images/Pasted image 20260110043434.png" alt="저장공간 관리 스크린샷">
+                    </div>
+                </div>
+            </div>
+
             <div class="timeline-item" id="project-xctest">
                 <div class="timeline-card">
                     <div class="timeline-header">
@@ -1158,7 +1196,7 @@
                         </div>
                         <div class="achievement">
                             <strong>성과:</strong><br>
-                            파편화된 신고 UI로 인한 코드 복잡도가 높았으나 클린 아키텍처를 적용해 의존성을 분리하고 유지보수성을 높임<br>
+                            파편화된 신고 UI로 인한 코드 복잡도가 높았으나 클린 아키텍처를 적용해 의존성을 분리하고, 테스트코드 작성하여 유지보수성을 높임<br>
                             디자이너와 더 나은 협업을 위해 신고 케이스마다 UI 프리뷰를 제공하여 디자이너와 필터링 시간을 단축함<br>
                             macOS에서 리소스부족으로 제공하지 못했던 기능들도 Android/iOS/Window와 동일한 수준으로 기능 제공
                         </div>
@@ -1167,49 +1205,60 @@
             </div>
 
             <div class="timeline-item" id="project-capture">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="timeline-title">채팅방 캡처 기능 개발</span>
-                        <span class="timeline-period">2023.03 ~ 2023.07</span>
+                <div class="timeline-card with-image">
+                    <div class="timeline-main">
+                        <div class="timeline-header">
+                            <span class="timeline-title">채팅방 캡처 기능 개발</span>
+                            <span class="timeline-period">2023.03 ~ 2023.07</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="timeline-desc">PC에서 쉽게 채팅방의 메시지들을 캡처할 수 있도록 주도적으로 발제하여 기능 구현</p>
+                            <div class="timeline-section">
+                                <div class="timeline-section-title">주요 업무</div>
+                                <ul class="timeline-list">
+                                    <li>다양한 메시지 타입, 채팅방 관련 코드베이스 분석 및 구현 설계</li>
+                                    <li>캡처시 사용자의 프로필을 모자이크 또는 카카오프렌즈 적용을 위한 구조 설계</li>
+                                    <li>캡처시 발생하는 메모리 이슈 등 성능 안정성 높임</li>
+                                </ul>
+                            </div>
+                            <div class="achievement">
+                                <strong>성과:</strong><br>
+                                macOS에서도 채팅방 캡처 기능 구현 완료<br>
+                                iOS/Window에서는 여러장 캡처시 앱이 죽거나 행이 걸리는 이슈들을 macOS에서는 보완하여 안정성 향상
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">채팅방의 메시지들을 캡처하여 저장하는 기능 개발</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>다양한 메시지 타입, 채팅방 관련 코드베이스 분석 및 구현 설계</li>
-                                <li>캡처시 사용자의 프로필을 모자이크 또는 카카오프렌즈 적용을 위한 구조 설계</li>
-                                <li>캡처시 발생하는 메모리 이슈 등 성능 안정성 높임</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            자발적으로 제공하지 않던 캡처 기능을 발제하고 구현했으며, iOS/Window에서는 여러장 캡처시 앱이 죽거나 행이 걸리는 이슈들을 macOS에서는 보완하여 안정성 향상
-                        </div>
+                    <div class="timeline-image">
+                        <img src="images/Pasted image 20260110043313.png" alt="채팅방 캡처 스크린샷">
                     </div>
                 </div>
             </div>
 
             <div class="timeline-item" id="project-scheduled">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="timeline-title">예약메시지 기능 개발</span>
-                        <span class="timeline-period">2023.03 ~ 2024.10</span>
+                <div class="timeline-card with-image">
+                    <div class="timeline-main">
+                        <div class="timeline-header">
+                            <span class="timeline-title">예약메시지 기능 개발</span>
+                            <span class="timeline-period">2023.03 ~ 2024.10</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="timeline-desc">예약 메시지 사용자 수가 늘어나면서 사용자의 요청사항이 많아지면서 다양한 개선 및 기능 추가 진행</p>
+                            <div class="timeline-section">
+                                <div class="timeline-section-title">주요 업무</div>
+                                <ul class="timeline-list">
+                                    <li>기존 코드 분석 및 UI 개편</li>
+                                    <li>예약메세지 첨부파일 제공을 위한 파일 업로드를 위한 API 구축</li>
+                                </ul>
+                            </div>
+                            <div class="achievement">
+                                <strong>성과:</strong><br>
+                                기존 Objective-C 코드 Swift 변환<br>
+                                예약메시지 발송 지표 15% 상승
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">예약 메시지 사용자 수가 늘어나면서 사용자의 요청사항이 많아지면서 다양한 개선 및 기능 추가 진행</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>기존 코드 분석 및 UI 사용성 개선</li>
-                                <li>예약메세지 첨부파일 제공을 위한 파일 업로드를 위한 API 구축</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            기존 Objective-C 코드 Swift 변환<br>
-                            예약메시지 발송 지표 15% 상승
-                        </div>
+                    <div class="timeline-image">
+                        <img src="images/Pasted image 20260110045902.png" alt="예약메시지 스크린샷">
                     </div>
                 </div>
             </div>
