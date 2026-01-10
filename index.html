@@ -503,6 +503,15 @@
             padding: 5px 12px;
             border-radius: 6px;
             font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-1px);
         }
 
         /* Career Card */
@@ -721,6 +730,22 @@
             font-size: 0.85rem;
         }
 
+        /* Personal Project Image */
+        .personal-project-image {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .personal-project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -743,6 +768,10 @@
                 left: -30px;
                 width: 12px;
                 height: 12px;
+            }
+
+            .personal-project-image {
+                max-width: 400px;
             }
 
             .contact {
@@ -855,17 +884,17 @@
                 <div class="work-section">
                     <div class="work-label">Business Work</div>
                     <div class="tags">
-                        <span class="tag">장소정보 UI/UX</span>
-                        <span class="tag">커스텀 포토피커</span>
+                        <a href="#project-place-detail" class="tag">장소정보 UI/UX</a>
+                        <a href="#project-photopicker" class="tag">커스텀 포토피커</a>
                     </div>
                 </div>
                 <div class="work-section">
                     <div class="work-label">Platform Work</div>
                     <div class="tags">
-                        <span class="tag">CI/CD</span>
-                        <span class="tag">Jenkins</span>
-                        <span class="tag">Fastlane</span>
-                        <span class="tag">Tuist</span>
+                        <a href="#project-jenkins" class="tag">CI/CD</a>
+                        <a href="#project-jenkins" class="tag">Jenkins</a>
+                        <a href="#project-certificate" class="tag">Fastlane</a>
+                        <a href="#project-tuist-layer" class="tag">Tuist</a>
                     </div>
                 </div>
             </div>
@@ -876,17 +905,19 @@
                 <div class="work-section">
                     <div class="work-label">Business Work</div>
                     <div class="tags">
-                        <span class="tag">신고 UI</span>
-                        <span class="tag">게시판 UI & 작성</span>
-                        <span class="tag">예약메시지</span>
-                        <span class="tag">채팅방 캡처</span>
-                        <span class="tag">파일 전송</span>
+                        <a href="#project-report" class="tag">신고 UI</a>
+                        <a href="#project-board" class="tag">게시판 UI & 작성</a>
+                        <a href="#project-scheduled" class="tag">예약메시지</a>
+                        <a href="#project-capture" class="tag">채팅방 캡처</a>
+                        <a href="#project-openchat-file" class="tag">파일 전송</a>
                     </div>
                 </div>
                 <div class="work-section">
                     <div class="work-label">Platform Work</div>
                     <div class="tags">
-                        <span class="tag">Swift & MVVM 변환</span>
+                        <a href="#project-board" class="tag">Swift & MVVM 변환</a>
+                        <a href="#project-xctest" class="tag">XCTest</a>
+                        <a href="#project-tuist-try" class="tag">Tuist</a>
                     </div>
                 </div>
             </div>
@@ -1177,29 +1208,34 @@
             </div>
 
             <div class="timeline-item" id="project-report">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="timeline-title">신고 기능 개발</span>
-                        <span class="timeline-period">2023.03 ~ 2024.12</span>
+                <div class="timeline-card with-image">
+                    <div class="timeline-main">
+                        <div class="timeline-header">
+                            <span class="timeline-title">신고 기능 개발</span>
+                            <span class="timeline-period">2023.03 ~ 2024.12</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="timeline-desc">카카오톡은 사용자의 부적절한 메시지, 허위 프로필 등이 존재하고 다양한 방식으로 불쾌감을 주는 방법들이 계속 나타나여 신고 기능을 개선하고 추가하는 작업을 진행</p>
+                            <div class="timeline-section">
+                                <div class="timeline-section-title">주요 업무</div>
+                                <ul class="timeline-list">
+                                    <li>파편화된 신고 UI 통일을 위한 구조 설계</li>
+                                    <li>오픈채팅, 팀채팅 방장, 일반채팅, 프로필이미지 등 신고 기능 제공</li>
+                                    <li>이미지 신고를 위한 이미지 업로드를 위한 API 구축</li>
+                                    <li>다양한 서비스에 걸친 코드베이스 분석</li>
+                                    <li>다양한 엣지 케이스 제공 및 스펙 기여</li>
+                                </ul>
+                            </div>
+                            <div class="achievement">
+                                <strong>성과:</strong><br>
+                                파편화된 신고 UI로 인한 코드 복잡도가 높았으나 클린 아키텍처를 적용해 의존성을 분리하고, 테스트코드 작성하여 유지보수성을 높임<br>
+                                디자이너와 더 나은 협업을 위해 신고 케이스마다 UI 프리뷰를 제공하여 디자이너와 필터링 시간을 단축함<br>
+                                macOS에서 리소스부족으로 제공하지 못했던 기능들도 Android/iOS/Window와 동일한 수준으로 기능 제공
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-body">
-                        <p class="timeline-desc">카카오톡은 사용자의 부적절한 메시지, 허위 프로필 등이 존재하고 다양한 방식으로 불쾌감을 주는 방법들이 계속 나타나여 신고 기능을 개선하고 추가하는 작업을 진행</p>
-                        <div class="timeline-section">
-                            <div class="timeline-section-title">주요 업무</div>
-                            <ul class="timeline-list">
-                                <li>파편화된 신고 UI 통일을 위한 구조 설계</li>
-                                <li>오픈채팅, 팀채팅 방장, 일반채팅, 프로필이미지 등 신고 기능 제공</li>
-                                <li>이미지 신고를 위한 이미지 업로드를 위한 API 구축</li>
-                                <li>다양한 서비스에 걸친 코드베이스 분석</li>
-                                <li>다양한 엣지 케이스 제공 및 스펙 기여</li>
-                            </ul>
-                        </div>
-                        <div class="achievement">
-                            <strong>성과:</strong><br>
-                            파편화된 신고 UI로 인한 코드 복잡도가 높았으나 클린 아키텍처를 적용해 의존성을 분리하고, 테스트코드 작성하여 유지보수성을 높임<br>
-                            디자이너와 더 나은 협업을 위해 신고 케이스마다 UI 프리뷰를 제공하여 디자이너와 필터링 시간을 단축함<br>
-                            macOS에서 리소스부족으로 제공하지 못했던 기능들도 Android/iOS/Window와 동일한 수준으로 기능 제공
-                        </div>
+                    <div class="timeline-image">
+                        <img src="images/Pasted image 20260110173818.png" alt="신고 기능 스크린샷">
                     </div>
                 </div>
             </div>
@@ -1298,60 +1334,151 @@
 
         <!-- Personal Projects -->
         <h2 id="personal-projects" class="section-title">개인 프로젝트</h2>
-        <div class="personal-grid">
-            <div class="personal-card">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021953.png" alt="AI단어암기장">
-                </div>
-                <div class="personal-content">
-                    <div class="personal-header">
-                        <h3>AI단어암기장</h3>
-                        <span class="period">2024.12 ~ 2025.02</span>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="timeline-title">AI단어암기장</span>
+                            <a href="https://apps.apple.com/kr/app/ai%EB%8B%A8%EC%96%B4%EC%95%94%EA%B8%B0%EC%9E%A5/id6740163477" target="_blank" class="personal-link">App Store →</a>
+                        </div>
+                        <span class="timeline-period">2024.12 ~ 2025.02</span>
                     </div>
-                    <p>AI를 이용하여 단어들을 문장으로 만들어주어 더 효과적으로 암기할 수 있도록 만든 iOS 앱. 클린아키텍쳐 기반 모듈 분리, SwiftUI 개발.</p>
-                    <a href="https://apps.apple.com/kr/app/ai%EB%8B%A8%EC%96%B4%EC%95%94%EA%B8%B0%EC%9E%A5/id6740163477" target="_blank" class="personal-link">App Store →</a>
+                    <div class="timeline-body">
+                        <p class="timeline-desc">저장한 단어들을 AI가 문장으로 만들어주어 더 효과적으로 암기할 수 있도록 만든 iOS앱입니다.</p>
+                        <div class="timeline-section">
+                            <div class="timeline-section-title">주요 업무</div>
+                            <ul class="timeline-list">
+                                <li>swiftUI로 뷰를 구성하고, 클린아키텍처 기반으로 개발</li>
+                                <li>Cloudkit을 이용하여 서버 컨트롤</li>
+                                <li>유료 결제서비스 도입 및 개인사업자 발급</li>
+                                <li>GPT api를 이용하고, 프롬프트 개선</li>
+                            </ul>
+                        </div>
+                        <div class="achievement">
+                            <strong>성과:</strong><br>
+                            한번에 모든 기능을 갖추기 보다는 단계적 릴리즈 배포<br>
+                            gpt api를 추후 애플의 AI 등 다른 api로 변경할 수 있게 의존성 분리함<br>
+                            서비스가 커질것도 염두하여 단어db도 추후 서버에서 받을 수 있도록 의존성 분리함
+                        </div>
+                        <div class="personal-project-image">
+                            <img src="images/Pasted image 20260110021953.png" alt="AI단어암기장">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="personal-card">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021326.png" alt="머니챌린지">
-                </div>
-                <div class="personal-content">
-                    <div class="personal-header">
-                        <h3>머니챌린지</h3>
-                        <span class="period">2024.05 ~ 2024.07</span>
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="timeline-title">머니챌린지</span>
+                            <a href="https://apps.apple.com/kr/app/%EB%A8%B8%EB%8B%88%EC%B1%8C%EB%A6%B0%EC%A7%80/id6504971575" target="_blank" class="personal-link">App Store →</a>
+                        </div>
+                        <span class="timeline-period">2024.05 ~ 2024.07</span>
                     </div>
-                    <p>직접 사용하기 위해 만든 가계부 Flutter 앱. 한 달 지출을 30일로 나눠 매일 쓸 금액을 정하고 모인 돈을 보여주는 기능. 클린아키텍쳐 기반.</p>
-                    <a href="https://apps.apple.com/kr/app/%EB%A8%B8%EB%8B%88%EC%B1%8C%EB%A6%B0%EC%A7%80/id6504971575" target="_blank" class="personal-link">App Store →</a>
+                    <div class="timeline-body">
+                        <p class="timeline-desc">제가 쓰고자 만든 가계부 앱으로 여러개의 가계부를 쓸수있게 했고, 단순히 남은 돈을 보여주는게 아니라, 한달에 지출할 돈을 정하여 30일로 나누어 매일 쓸 금액을 정하고, 안쓸수록 모인돈과 쓸돈을 보여주도록 만들었습니다. 혼자서 사용하던 iOS프로젝트를 flutter로 새로 만든 앱입니다.</p>
+                        <div class="timeline-section">
+                            <div class="timeline-section-title">주요 업무</div>
+                            <ul class="timeline-list">
+                                <li>안드로이드 및 iOS 둘다 가능한 flutter를 이용하여 개발</li>
+                            </ul>
+                        </div>
+                        <div class="achievement">
+                            <strong>성과:</strong><br>
+                            새로운 플랫폼 flutter를 이용하여 앱 개발 출시 완료<br>
+                            클린아키텍처 기반으로 개발하여 이전 프로젝트와 비교했을때 생산성 향상
+                        </div>
+                        <div class="personal-project-image">
+                            <img src="images/Pasted image 20260110021326.png" alt="머니챌린지">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="personal-card">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021939.png" alt="띵로그">
-                </div>
-                <div class="personal-content">
-                    <div class="personal-header">
-                        <h3>띵로그</h3>
-                        <span class="period">2021.12 ~ 2022.02</span>
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="timeline-title">띵로그</span>
+                            <a href="https://apps.apple.com/kr/app/%EB%9D%B5%EB%A1%9C%EA%B7%B8/id1586982199" target="_blank" class="personal-link">App Store →</a>
+                        </div>
+                        <span class="timeline-period">2021.12 ~ 2022.02</span>
                     </div>
-                    <p>자신이 좋아하는 물건들을 기록하는 앱. 깔끔한 디자인으로 기록한 물건들을 쉽게 볼 수 있도록 제작. iOS 2명, 디자이너 1명 팀 프로젝트.</p>
-                    <a href="https://apps.apple.com/kr/app/%EB%9D%B5%EB%A1%9C%EA%B7%B8/id1586982199" target="_blank" class="personal-link">App Store →</a>
+                    <div class="timeline-body">
+                        <p class="timeline-desc">자신이 좋아하는 물건들을 기록하는 앱입니다. 깔끔한 디자인으로 자신이 기록한 물건들을 쉽게 보고자 iOS앱으로 만들었습니다. iOS 2명, 디자이너 1명으로 만든 팀프로젝트입니다.</p>
+                        <div class="timeline-section">
+                            <div class="timeline-section-title">주요 업무</div>
+                            <ul class="timeline-list">
+                                <li>UIKit으로 뷰 구현하며, iOS 개발자와 PR 리뷰를 통해 개발</li>
+                            </ul>
+                        </div>
+                        <div class="achievement">
+                            <strong>성과:</strong><br>
+                            첫 팀프로젝트로 무사히 앱 출시 완료
+                        </div>
+                        <div class="personal-project-image">
+                            <img src="images/Pasted image 20260110163733.png" alt="띵로그">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="personal-card">
-                <div class="personal-image">
-                    <img src="images/Pasted image 20260110021929.png" alt="쉬운 과제 캘린더">
-                </div>
-                <div class="personal-content">
-                    <div class="personal-header">
-                        <h3>쉬운 과제 캘린더</h3>
-                        <span class="period">2020.04 ~ 2021.09</span>
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="timeline-title">쉬운 과제 캘린더</span>
+                            <a href="https://apps.apple.com/kr/app/%EC%89%AC%EC%9A%B4-%EA%B3%BC%EC%A0%9C-%EC%BA%98%EB%A6%B0%EB%8D%94/id1506355497" target="_blank" class="personal-link">App Store →</a>
+                        </div>
+                        <span class="timeline-period">2020.04 ~ 2021.09</span>
                     </div>
-                    <p>캘린더 형식으로 할 일들을 한눈에 보고 체크할 수 있는 앱. 첫 앱이자 1년 넘게 유지보수하며 사용자 피드백을 반영하며 성장.</p>
-                    <a href="https://apps.apple.com/kr/app/%EC%89%AC%EC%9A%B4-%EA%B3%BC%EC%A0%9C-%EC%BA%98%EB%A6%B0%EB%8D%94/id1506355497" target="_blank" class="personal-link">App Store →</a>
+                    <div class="timeline-body">
+                        <p class="timeline-desc">캘린더 형식으로 한눈에 할일들을 보고 싶었고, 할일들을 체크함으로써 정말로 할일을 했는지 확인하고 싶어서 직접 만들게 되었습니다. 첫 저의 앱이자 유지보수를 1년넘게 하면서 사용자들에게 피드백도 받으며 서비스를 개선해나갔고 애정이 많았던 앱이였습니다.</p>
+                        <div class="timeline-section">
+                            <div class="timeline-section-title">주요 업무</div>
+                            <ul class="timeline-list">
+                                <li>UIKit으로 화면 구성 및 다양한 서드파티 사용</li>
+                                <li>사용자의 피드백을 받기위해 앱 내에 의견받을 수 있는 창구 구현</li>
+                                <li>수익을 위한 구글광고 부착</li>
+                            </ul>
+                        </div>
+                        <div class="achievement">
+                            <strong>성과:</strong><br>
+                            약 2년동안 8400명 다운로드 및 총 광고수익 350$<br>
+                            대학교 에브리타임에도 꾸준히 광고하고, 사용자의 피드백을 통한 지속적인 업데이트를 통해 출시 5개월 후 부터는 월간 신규설치 454% 상승 (150명 -> 682명)
+                        </div>
+                        <div class="personal-project-image">
+                            <img src="images/Pasted image 20260110021929.png" alt="쉬운 과제 캘린더">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <span class="timeline-title">마스크 있나요?</span>
+                        <span class="timeline-period">2020.03</span>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="timeline-desc">코로나로 인해 마스크 구매가 어려워졌고, 마스크를 구매할 수 있는 약국을 보여주기 위한 앱입니다.</p>
+                        <div class="timeline-section">
+                            <div class="timeline-section-title">주요 업무</div>
+                            <ul class="timeline-list">
+                                <li>약국정보를 얻기위해 공공API를 이용</li>
+                                <li>Apple 지도를 이용하여 약국 위치들 보여주도록 구현</li>
+                            </ul>
+                        </div>
+                        <div class="achievement">
+                            <strong>성과:</strong><br>
+                            밤을 새면서 3일만에 구현했지만, 4번의 리젝을 당하여 앱 출시 실패. 하지만 리젝의 중요성을 얻음.
+                        </div>
+                        <div class="personal-project-image">
+                            <img src="images/Pasted image 20260110172521.png" alt="마스크 있나요?">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
